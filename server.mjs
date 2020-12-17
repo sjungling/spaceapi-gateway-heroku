@@ -1,5 +1,6 @@
 import { ApolloGateway } from "@apollo/gateway";
 import { ApolloServer } from "apollo-server";
+const PORT = process.env.PORT || 5000;
 const gateway = new ApolloGateway();
 const server = new ApolloServer({
   gateway,
@@ -18,6 +19,6 @@ const server = new ApolloServer({
     origin: "*",
   },
 });
-server.listen().then(({ url }) => {
+server.listen(PORT).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
