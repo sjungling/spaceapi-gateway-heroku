@@ -1,5 +1,6 @@
 import { ApolloGateway } from "@apollo/gateway";
 import { ApolloServer } from "apollo-server";
+import { ApolloServerPluginInlineTrace } from "apollo-server-core";
 const PORT = process.env.PORT || 5000;
 const gateway = new ApolloGateway();
 const server = new ApolloServer({
@@ -18,6 +19,7 @@ const server = new ApolloServer({
   cors: {
     origin: "*",
   },
+  plugins: [ApolloServerPluginInlineTrace()],
 });
 server.listen(PORT).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
